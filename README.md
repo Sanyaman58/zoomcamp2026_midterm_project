@@ -42,11 +42,20 @@ midterm_project/
 └── Dockerfile                # list of instructions, from which a Docker image is built
 ```
 
+## Prerequisites
+
+Before running anything, make sure you have the following installed:
+
+- **Python 3.11** — download from https://www.python.org/downloads/
+- **pip** — comes bundled with Python 3.11, no separate install needed
+- **Docker** — download from https://www.docker.com/products/docker-desktop/ (only needed for the Docker setup)
+
 ## To run things locally on Windows machines:
 
 ### 1. Install dependencies
 
 pip install pipenv
+
 pipenv install
 
 ### 2. Train the model from the pipenv, which will create the model .bin file in the project directory
@@ -63,23 +72,29 @@ python predict-test.py
 
 ## To run everything in a Docker container on Windows machines:
 
-### 1. Train the model, if you don't have the .bin file in the project directory
+### 1. Install pipenv
+
+pip install pipenv
+
+pipenv install
+
+### 2. Train the model, if you don't have the .bin file in the project directory
 
 pipenv run python train.py
 
-### 2. Download the Docker 
+### 3. Download the Docker 
 
 Follow the instruction by Andrew Lock: https://andrewlock.net/installing-docker-desktop-for-windows/.
 
-### 3. Build the Docker image from the Dockerfile in the project directory
+### 4. Build the Docker image from the Dockerfile in the project directory
 
 docker build -t stellar-classification .
 
-### 4. Run the Docker container
+### 5. Run the Docker container
 
 docker run -it --rm -p 9696:9696 stellar-classification
 
-### 5. In a separate terminal, run a predict-test.py script
+### 6. In a separate terminal, run a predict-test.py script
 
 python predict-test.py
 
